@@ -9,13 +9,13 @@
 
 	<script type="text/jsx">
 
-		var App = React.createClass({
-			render: function(){
-				return <h1>Hello World</h1>;
-			}
-		});
+		// var App = React.createClass({
+		// 	render: function(){
+		// 		return <h1>Hello World</h1>;
+		// 	}
+		// });
 
-		React.render(<App />, document.body);
+		// React.render(<App />, document.body);
 	</script>
 
 	<script>
@@ -36,6 +36,69 @@
 
 		// React.render(React.createElement(App), document.body);
 	</script>
+
+<!-- Trigger error in render, only returns one expression -->
+	<script type="text/jsx">
+
+	// 	var App = React.createClass({
+	// 		render: function(){
+	// 			return (<h1>Hello World</h1>
+	// 					<b>Bold</b>
+	// 					)
+	// 		}
+	// 	});
+
+	// 	React.render(<App />, document.body);
+	</script>
+
+	<script type="text/jsx">
+
+		// var App = React.createClass({
+		// 	render: function(){
+		// 		return (<div>
+		// 					<h1>Hello World</h1>
+		// 					<b>Bold</b>
+		// 				</div>
+		// 				)
+		// 	}
+		// });
+
+		// React.render(<App />, document.body);
+	</script>
+<!-- above is equal to this, using React.createElement -->
+	<script>
+
+		// var App = React.createClass({
+		// 	render: function(){
+		// 		return React.createElement('div',null,
+		// 					React.createElement('h1',null,'Hello World'),
+		// 					React.createElement('b',null,'Bold'));
+		// 	}
+		// });
+
+		// React.render(React.createElement(App), document.body);
+	</script>
+
+<!-- This gives an Invariant Violation error since we return nothing because nothing is in the same line as our return statement. To fix it, have the DOM elements in the same line as our return statement-->
+	<script type="text/jsx">
+
+		// var App = React.createClass({
+		// 	render: function(){
+		// 		return 
+		// 			<div>
+		// 					<h1>Hello World</h1>
+		// 					<b>Bold</b>
+		// 				</div>
+						
+							
+		// 	}
+		// });
+
+		// React.render(<App />, document.body);
+	</script>
+
+	
+
 </body>
 
 </html>
