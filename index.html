@@ -96,9 +96,57 @@
 
 		// React.render(<App />, document.body);
 	</script>
+<!-- Shows how to create a property to be rendered using this.props -->
+	<script type="text/jsx">
+		var App = React.createClass({
+			render: function(){
+				var txt = this.props.txt;
+				return (<div>
+							<h1>Hello World</h1>
+							// <b>{this.props.txt}</b>
+							<b>{txt}</b>
 
-	
+						</div>);
+			}
+		});
 
+		React.render(<App txt="Some text inserted."/>, document.body);
+
+	</script>
+
+	<script type="text/jsx">
+		var App = React.createClass({
+			// We can specify defaults, which will be overwritten in case they are defined later.
+			getDefaultProps:function(){
+				return {
+					txt: "Some other text",
+					cat: 45,
+					dog: 25
+				}
+			},
+			// we can specify types of properties in props using propTypes
+			propTypes: {
+				txt: React.PropTypes.string,
+				cat: React.PropTypes.number,
+				age: React.PropTypes.number.isRequired
+			},
+
+			render: function(){
+				var txt = this.props.txt;
+				// NEVER put comments in the return () statement. Since it is a function although it looks like HTML.
+				return (<div>
+							<h1>Hello World</h1>
+							<b>{txt}</b>
+							<b>{this.props.cat}</b>
+							<b>{this.props.dog}</b>
+
+						</div>);
+			}
+		});
+
+		React.render(<App cat={5} txt="Some text inserted."/>, document.body);
+
+	</script>
 </body>
 
 </html>
