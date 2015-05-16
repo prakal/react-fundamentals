@@ -1,0 +1,41 @@
+<html> 
+
+<head>
+	<script src="https://fb.me/react-0.12.2.js"></script>
+	<script src="https://fb.me/JSXTransformer-0.12.2.js"></script>
+</head>
+
+<body>
+
+	<script type="text/jsx">
+
+		var App = React.createClass({
+			render: function(){
+				return <h1>Hello World</h1>;
+			}
+		});
+
+		React.render(<App />, document.body);
+	</script>
+
+	<script>
+		// var App = React.createClass({
+		// 	render: function(){
+		// 		return React.DOM.h1({id:'gfdgd'}, "Hello World");
+		// 	}
+		// });
+
+		// React.render(App(), document.body);
+	</script>
+	<script>
+		// var App = React.createClass({
+		// 	render: function(){
+		// 		return React.createElement("h1",null,"Yo");
+		// 	}
+		// });
+
+		// React.render(React.createElement(App), document.body);
+	</script>
+</body>
+
+</html>
