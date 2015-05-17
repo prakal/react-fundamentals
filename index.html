@@ -174,10 +174,37 @@
 		// });
 		// React.render(<App />, document.body);
 	</script>
-
+	<!-- Shows how to make a composite and component relationship between two React components -->
 	<script type="text/jsx">
 
-		
+		var App = React.createClass({
+			getInitialState : function(){
+				return {
+					txt: "Initial Text"
+				}
+			},
+			update : function(e){
+				this.setState({txt: e.target.value});
+			},
+			render : function(){
+				return (<div>
+							<Widget txt={this.state.txt} updater={this.update}/>
+						</div>	
+						)
+			}
+		});
+
+		var Widget = React.createClass({
+			render : function(){
+				return (<div>
+							<input type='text' onChange={this.props.updater} />
+							<div> {this.props.txt} </div>
+						</div>)
+			}
+		});
+
+		React.render(<App />, document.body);
+
 	</script>
 </body>
 
