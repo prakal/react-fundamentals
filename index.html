@@ -98,54 +98,86 @@
 	</script>
 <!-- Shows how to create a property to be rendered using this.props -->
 	<script type="text/jsx">
-		var App = React.createClass({
-			render: function(){
-				var txt = this.props.txt;
-				return (<div>
-							<h1>Hello World</h1>
-							// <b>{this.props.txt}</b>
-							<b>{txt}</b>
+	// 	var App = React.createClass({
+	// 		render: function(){
+	// 			var txt = this.props.txt;
+	// 			return (<div>
+	// 						<h1>Hello World</h1>
+	// 						// <b>{this.props.txt}</b>
+	// 						<b>{txt}</b>
 
-						</div>);
-			}
-		});
+	// 					</div>);
+	// 		}
+	// 	});
 
-		React.render(<App txt="Some text inserted."/>, document.body);
+	// 	React.render(<App txt="Some text inserted."/>, document.body);
 
 	</script>
 
 	<script type="text/jsx">
-		var App = React.createClass({
-			// We can specify defaults, which will be overwritten in case they are defined later.
-			getDefaultProps:function(){
-				return {
-					txt: "Some other text",
-					cat: 45,
-					dog: 25
-				}
-			},
-			// we can specify types of properties in props using propTypes
-			propTypes: {
-				txt: React.PropTypes.string,
-				cat: React.PropTypes.number,
-				age: React.PropTypes.number.isRequired
-			},
+		// var App = React.createClass({
+		// 	// We can specify defaults, which will be overwritten in case they are defined later.
+		// 	getDefaultProps:function(){
+		// 		return {
+		// 			txt: "Some other text",
+		// 			cat: 45,
+		// 			dog: 25
+		// 		}
+		// 	},
+		// 	// we can specify types of properties in props using propTypes
+		// 	propTypes: {
+		// 		txt: React.PropTypes.string,
+		// 		cat: React.PropTypes.number,
+		// 		age: React.PropTypes.number.isRequired
+		// 	},
 
-			render: function(){
-				var txt = this.props.txt;
-				// NEVER put comments in the return () statement. Since it is a function although it looks like HTML.
-				return (<div>
-							<h1>Hello World</h1>
-							<b>{txt}</b>
-							<b>{this.props.cat}</b>
-							<b>{this.props.dog}</b>
+		// 	render: function(){
+		// 		var txt = this.props.txt;
+		// 		// NEVER put comments in the return () statement. Since it is a function although it looks like HTML.
+		// 		return (<div>
+		// 					<h1>Hello World</h1>
+		// 					<b>{txt}</b>
+		// 					<b>{this.props.cat}</b>
+		// 					<b>{this.props.dog}</b>
 
-						</div>);
-			}
-		});
+		// 				</div>);
+		// 	}
+		// });
 
-		React.render(<App cat={5} txt="Some text inserted."/>, document.body);
+		// React.render(<App cat={5} txt="Some text inserted."/>, document.body);
 
+	</script>
+	<!-- states are dynamic, while props are static. this is the way to generate dynamically changing input content. getInitialState(return {}), this.setState({}) and an onChange event listener on the input field -->
+	<script type="text/jsx">
+
+		// var App = React.createClass({
+		// 	getInitialState : function(){
+		// 		return {
+		// 			txt: 'Initial Text',
+		// 			id: 0
+		// 		};
+		// 	},
+		// 	update : function(e){
+		// 		this.setState({txt: e.target.value});
+		// 	},
+
+		// 	render : function(){
+		// 		return (
+		// 			<div>
+		// 				<input type='text' onChange={this.update} />
+		// 				<div> {this.state.txt} </div>
+		// 			</div>
+		// 			)
+		// 	}
+			
+
+		// });
+		// React.render(<App />, document.body);
+	</script>
+
+	<script type="text/jsx">
+
+		
 	</script>
 </body>
 
