@@ -176,35 +176,78 @@
 	</script>
 	<!-- Shows how to make a composite and component relationship between two React components -->
 	<script type="text/jsx">
+		// var App = React.createClass({
+		// 	getInitialState : function(){
+		// 		return {
+		// 			txt: "Initial Text"
+		// 		}
+		// 	},
+		// 	update : function(e){
+		// 		this.setState({txt: e.target.value});
+		// 	},
+		// 	render : function(){
+		// 		return (<div>
+		// 					<Widget txt={this.state.txt} updater={this.update}/>
+		// 				</div>	
+		// 				)
+		// 	}
+		// });
 
+		// var Widget = React.createClass({
+		// 	render : function(){
+		// 		return (<div>
+		// 					<input type='text' onChange={this.props.updater} />
+		// 					<div> {this.props.txt} </div>
+		// 				</div>)
+		// 	}
+		// });
+
+		// React.render(<App />, document.body);
+
+	</script>
+	<!-- below shows us how refs work, and how to manipulate the values in an input by their ref name -->
+	<script type="text/jsx">
+		// App is the composite function
 		var App = React.createClass({
 			getInitialState : function(){
 				return {
-					txt: "Initial Text"
+					red: 0,
+					blue: 0,
+					green: 0
 				}
 			},
-			update : function(e){
-				this.setState({txt: e.target.value});
+			update : function(){
+				this.setState({
+					red: this.refs.red.refs.inside.getDOMNode().value,
+					green: this.refs.green.refs.inside.getDOMNode().value,
+					blue: this.refs.blue.refs.inside.getDOMNode().value
+				})
 			},
 			render : function(){
-				return (<div>
-							<Widget txt={this.state.txt} updater={this.update}/>
-						</div>	
-						)
+				return (
+					<div>
+						<Slider ref="red" update={this.update}/>
+						<label>{this.state.red} - Red </label>
+						<Slider ref="green" update={this.update}/>
+						<label>{this.state.green} - green </label>
+						<Slider ref="blue" update={this.update}/>
+						<label>{this.state.blue} - blue </label>
+
+					</div>
+					)
 			}
 		});
-
-		var Widget = React.createClass({
+		// Slider is the component of the composite
+		var Slider = React.createClass({
 			render : function(){
-				return (<div>
-							<input type='text' onChange={this.props.updater} />
-							<div> {this.props.txt} </div>
-						</div>)
+				return (
+					<div>
+						<input ref="inside" type="range" min="0" max="255" onChange={this.props.update}/>
+					</div>
+					)
 			}
 		});
-
 		React.render(<App />, document.body);
-
 	</script>
 </body>
 
